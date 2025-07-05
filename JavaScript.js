@@ -138,8 +138,8 @@ function JUEGO() {
   //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
   function Aumentar_Puntos() {
     Puntaje++;
-    document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;5";
-    if (Puntaje == 5) {
+    document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;27";
+    if (Puntaje == 27) {
       Puntaje = 0;
       Tiempo = 71;
 

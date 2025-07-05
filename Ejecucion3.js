@@ -35,8 +35,8 @@ function JUEGOlvl3() {
   //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
   function Aumentar_Puntoslvl3() {
     Puntajelvl3++;
-    document.getElementById("Puntajelvl3").innerHTML = Puntajelvl3 + " / 4";
-    if (Puntajelvl3 == 1) {
+    document.getElementById("Puntajelvl3").innerHTML = Puntajelvl3 + " / 40";
+    if (Puntajelvl3 == 40) {
       Puntajelvl3 = 0;
       Tiempolvl3 = 51;
       function Contactos() {
