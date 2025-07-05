@@ -58,7 +58,7 @@ let nivelganado = false;
             alert("El tiempo se agotó, lo lamento, de seguro lo lograrás para la siguiente")} 
         
         }
-        
+        let Restar_Tiempolvl2 = setInterval(Tiempo_Disminurlvl2, 1000)
 //CONTENEDOR QUE CONTEIENE TOO EL JUEGO
 //DE POR SI ESTA FUNCION NO SE EJECUTA HASTA QUE SE LA LLAMA, MAS ADELANTE LA LLAMAREMOS
 //PARA QUE EL JUEGO INICIE UNA VEZ SE PRESIONE JUGAR
@@ -67,8 +67,7 @@ function JUEGOlvl2(){
     
 
         Tiempo_Disminurlvl2();
-        Restar_Tiempolvl2 = setInterval(Tiempo_Disminurlvl2, 1000)
-
+        
         //AÑADIMOS LA FUNCION AUMENTAR PUNTOS AL PASAR EL CURSOR SOBRE LOS METIORITOS
         document.getElementById("Meteioritolvl2").addEventListener('mouseover', Aumentar_Puntoslvl2)
         document.getElementById("Meteiorito2lvl2").addEventListener('mouseover', Aumentar_Puntoslvl2)
@@ -267,9 +266,6 @@ function JUEGOlvl2(){
                             ClearTrayectoria("lvl2");
                             ClearTrayectoria("2lvl2");
                             ClearTrayectoria("3lvl2");
-                            //clearInterval(Reanudar_trayectorialvl2)
-                            //clearInterval(Reanudar_trayectoria2lvl2)
-                            //clearInterval(Reanudar_trayectoria3lvl2)
 
                             function Metiorito_detenerlvl2 (){   
                             document.getElementById("Meteioritolvl2").style.left = document.getElementById("Meteioritolvl2").offsetLeft + "px" 
