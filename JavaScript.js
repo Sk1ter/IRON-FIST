@@ -310,7 +310,7 @@ function PLAY() {
 //ESTA FUNCION CONTIENE EL REANUDE Y PAUSE DEL BOTON
 function DETENER_JUEGO() {
   //INDICA QUE LA FUNCION DE PAUSE SE EJECUTARA UNA VEZ SE DE CLICK AL BOTON DE PAUSE
-  document.getElementById("Pause").addEventListener("click", PAUSE);
+  document.getElementById("Pauselvl1").addEventListener("click", PAUSE);
   //ESTA VARIABLE INDICA SI SE EJECUTA O NO EL DESPAUSEO
   Activo = 1;
   //HACE QUE EL JUEGO SE DETENGA

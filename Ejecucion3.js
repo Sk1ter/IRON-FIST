@@ -1,5 +1,5 @@
-Tiempolvl3 = 51; //VARIBLE DE INICIO TIEMPO
-Puntajelvl3 = 0; //VARIABLE DE INICIO PUNTOS
+let Tiempolvl3 = 51; //VARIBLE DE INICIO TIEMPO
+let Puntajelvl3 = 0; //VARIABLE DE INICIO PUNTOS
 let Juego_Terminado = false;
 
 //CONTENEDOR QUE CONTIENE TOO EL JUEGO
@@ -43,7 +43,7 @@ function JUEGOlvl3() {
         Swal.fire({
           title:
             'Felicitaciones por parte del <br> Grupo Omega<br><br><img src="IMG/Logo_Omega.png" width = "120px">',
-          html: '<b class="Aumentar puntos">Sabia que lo lograrias, nos salVaste de la destrucciÓn, pero ahora nos espera otra lucha, esperemos volVerte a ver jugando IRON FIST 2 en un futuro <br><br> CONTACTOS:<br><br> 71727432@certus.edu.pe <br><br> 71663265@certus.edu.pe <br><br> 70845813@certus.edu.pe <br> </b>',
+          html: '<b class="Aumentar puntos">Sabia que lo lograrias, nos salvaste de la destrucciÓn, pero ahora nos espera otra lucha, esperemos volver a verte jugando IRON FIST 2 en un futuro <br><br> CONTACTOS:<br><br> 71727432@certus.edu.pe <br><br> 71663265@certus.edu.pe <br><br> 70845813@certus.edu.pe <br> </b>',
           icon: "success",
           confirmButtonText: '<span id="Pausear_musica">De acuerdo</span>',
           width: "50%",
@@ -242,9 +242,7 @@ function JUEGOlvl3() {
   //ESTA FUNCION SE ENCARGA DE ALERTARTE UNA VEZ EL METEORITO CRUZE LA LINEA CON UN PERDISTE
   //TAMBIEN RESETEA LOS VALORES Y LLEVA A LOS METEORITOS FUERA DEL MAPA DE MANERA INSTANTANEA
   function perdistelvl3() {
-    if (Juego_Terminado) {
-      return;
-    }
+  
 
     if (
       document.getElementById("Meteoritolvl3").offsetLeft > 630 ||
