@@ -296,7 +296,7 @@ html body {
 .Contenedor {
   width: 900px;
   height: 500px;
-  border: 5px solid purple;
+  border: 7px solid purple;
   background: url(IMG/Fondo.jpg) no-repeat 50% 50%;
   background-size: cover;
   position: relative;
@@ -307,7 +307,7 @@ html body {
 /*CABEZARA DENTRO DEL JUEGO*/
 .Cabezera {
   height: 70px;
-  border: 5px dashed purple;
+  border: 7px solid purple;
   background: rgba(255, 255, 255, 0.363);
   border-bottom: none;
   display: flex;
@@ -322,7 +322,7 @@ html body {
   background: rgba(0, 0, 0, 0.582);
   position: absolute;
   top: 0%;
-  z-index: 100000000000;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -398,7 +398,6 @@ html body {
   background: rgba(47, 255, 57, 0.63);
   z-index: 900;
   top: 0%;
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -407,7 +406,7 @@ html body {
 
 .GANASTE_PANTALLA h1 {
   font-family: "Press Start 2P", cursive;
-  color: rgb(10, 90, 16);
+  color: rgb(0, 0, 0);
   text-align: center;
   font-size: 2rem;
   line-height: 40px;
@@ -659,7 +658,7 @@ html body {
 .Contenedorlvl2 {
   width: 900px;
   height: 500px;
-  border: 5px dashed rgb(46, 86, 218);
+  border: 7px solid rgb(46, 86, 218);
   background: url(IMG/Fondo.jpg) no-repeat 50% 50%;
   background-size: cover;
   position: relative;
@@ -674,7 +673,7 @@ html body {
   background: rgba(0, 0, 0, 0.582);
   position: absolute;
   top: 0;
-  z-index: 100000000000;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -755,7 +754,6 @@ html body {
   background: rgba(47, 255, 57, 0.63);
   z-index: 900;
   top: 0%;
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -764,9 +762,10 @@ html body {
 
 .GanastePantallaLvL2 h1 {
   font-family: "Press Start 2P", cursive;
-  color: rgb(10, 90, 16);
+  color: rgb(0, 0, 0);
   text-align: center;
   font-size: 2rem;
+  line-height: 40px;
 }
 
 .GanastePantallaLvL2 h3 {
@@ -775,6 +774,7 @@ html body {
   padding-right: 10%;
   color: rgb(0, 0, 0);
   font-family: "Press Start 2P", cursive;
+  line-height: 25px;
 }
 
 /*ESTILOS GENERALES DE LOS METIORITOS*/
@@ -865,7 +865,7 @@ html body {
 /*CABEZARA DENTRO DEL JUEGO*/
 .Cabezeralvl2 {
   height: 70px;
-  border: 5px dashed rgb(0, 119, 255);
+  border: 7px solid rgb(46, 86, 218);
   background: rgba(255, 255, 255, 0.363);
   border-bottom: none;
   display: flex;
@@ -936,7 +936,7 @@ html body {
 .Contenedorlvl3 {
   width: 900px;
   height: 500px;
-  border: 5px dashed red;
+  border: 7px solid red;
   background: url(IMG/Fondo.jpg) no-repeat 50% 50%;
   background-size: cover;
   position: relative;
@@ -951,7 +951,7 @@ html body {
   background: rgba(0, 0, 0, 0.582);
   position: absolute;
   top: 0%;
-  z-index: 100000000000;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -968,7 +968,7 @@ html body {
   height: 9%;
   display: flex;
   align-items: center;
-  left: 0;
+  /*left: 0;*/
   justify-content: center;
   cursor: pointer;
   position: relative;
@@ -1094,7 +1094,7 @@ html body {
 /*CABEZARA DENTRO DEL JUEGO*/
 .Cabezeralvl3 {
   height: 70px;
-  border: 5px dashed red;
+  border: 7px solid red;
   background: rgba(255, 255, 255, 0.363);
   border-bottom: none;
   display: flex;
