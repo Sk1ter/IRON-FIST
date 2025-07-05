@@ -158,7 +158,7 @@ function JUEGO() {
         title:
           'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width = "120px"><br>',
         html: "Al parecer nos salvamos, agradecemos tu ayuda y ezfuerzo al superar este nivel, esperamos seguir contando contigo, si algo mas sucede y por cierto, no olvides que te esperan grandes cosas al final del juego asi que no pares de intentar ",
-        icon: "sucess",
+        icon: "success",
         confirmButtonText: "QUIERO CONTINUAR",
         width: "50%",
         // height: "80%",
@@ -209,15 +209,7 @@ function JUEGO() {
     .addEventListener("mouseover", Explulsar2);
 
   //ESTA ES LA FUNCION QUE EXPULSA AL METIRITO 1 DE MANERA ALEATORIA FUERA DEL MAPA
-  // function Explulsar() {
-  //   document.getElementById("Puntos_sound").play();
-  //   Distancia = "-500";
-  //   Altura = Math.round(Math.random() * 450);
 
-  //   document.getElementById("Meteiorito").style.left = Distancia + "px";
-  //   document.getElementById("Meteiorito").style.top = Altura + "px";
-  //   document.getElementById("Meteiorito").style.transition = "1.8s";
-  // }
   function Explulsar() {
     const meteorito = document.getElementById("Meteiorito");
     const sonido = document.getElementById("Puntos_sound");
@@ -246,15 +238,6 @@ function JUEGO() {
     meteorito2.style.top = altura + "px";
     meteorito2.style.transition = "1.8s";
   }
-  // function Explulsar2() {
-  //   document.getElementById("Punto2").play();
-  //   Distancia = "-500";
-  //   Altura = Math.round(Math.random() * 450);
-
-  //   document.getElementById("Meteiorito2").style.left = Distancia + "px";
-  //   document.getElementById("Meteiorito2").style.top = Altura + "px";
-  //   document.getElementById("Meteiorito2").style.transition = "1.8s";
-  // }
 
   //ESTA FUNCION SE ENCARGA DE ALERTARTE UNA VEZ EL METIORITO CRUZE LA LINEA CON UN PERDISTE
   //TAMBIEN RESETEA LOS VALORES Y LLEVA A LOS METIORITOS FUERA DEL MAPA DE MANERA INSTANTANEA
@@ -281,7 +264,7 @@ function JUEGO() {
     }
   }
 
-  setInterval(perdiste, 100); //LE COLOCAMOS UNO PARA QUE SIEMPRE SE ESTE EJECUTANDO, DADO A QUE NO SABEMOS CUANDO EL METIORITO VA A SUPERAR EL LIMITE
+  setInterval(perdiste, 100); // 100 = 10 veces por segundo suficiente 
 }
 
 //LE DECIMOS QUE AL PRECIONAR EL BOTON JUGAR EJECUTARA LA FUNCION PLAY

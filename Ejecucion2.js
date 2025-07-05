@@ -79,7 +79,7 @@ function JUEGOlvl2(){
         //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
         function Aumentar_Puntoslvl2(){
             Puntajelvl2++;
-            document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 4"
+            document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 34"
             if(Puntajelvl2 == 34){
                 Puntajelvl2 = 0 
                 Tiempolvl2 = 61
