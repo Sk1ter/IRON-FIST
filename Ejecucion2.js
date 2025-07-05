@@ -24,10 +24,10 @@ let nivelganado = false;
         triunfo: document.getElementById("Triunfo"),
         perdiste: document.getElementById("Perdiste_sound")
         };
-        function Metiorito_Direccion(elemtoid, distancia_2, altura_2){
+        function Metiorito_Direccion(elemtoid, distancia_2){
             if (nivelganado) return;
             const distanciainicial =distancia_2;
-            const alturaall= Math.round(Math.random()+altura_2);
+            const alturaall= Math.round(Math.random()*450);
 
             const elemento = document.getElementById(elemtoid);
             if(elemento){
@@ -154,9 +154,9 @@ function JUEGOlvl2(){
 
             
             
-            inciarMovimientoMeteorito("lvl2",()=> Metiorito_Direccion("Meteioritolvl2",80 ,450),3500,2030);
-            inciarMovimientoMeteorito("2lvl2",()=> Metiorito_Direccion("Meteiorito2lvl2",80 ,450),3000,2750);
-            inciarMovimientoMeteorito("3lvl2",()=> Metiorito_Direccion("Meteiorito3lvl2",80 ,450),2200,2470);
+            inciarMovimientoMeteorito("lvl2",()=> Metiorito_Direccion("Meteioritolvl2",80 ),3500,2030);
+            inciarMovimientoMeteorito("2lvl2",()=> Metiorito_Direccion("Meteiorito2lvl2",80 ),3000,2750);
+            inciarMovimientoMeteorito("3lvl2",()=> Metiorito_Direccion("Meteiorito3lvl2",80 ),2200,2470);
             
 
 
@@ -314,9 +314,9 @@ function JUEGOlvl2(){
                             mover_meteorito("Meteioritolvl2", Distancia1lvl2, Altura1lvl2);
                             mover_meteorito("Meteiorito2lvl2", Distancia2lvl2, Altura2lvl2);
                             mover_meteorito("Meteiorito3lvl2", Distancia3lvl2, Altura3lvl2);
-                        inciarMovimientoMeteorito("lvl2",()=> Metiorito_Direccion("Meteioritolvl2",80 ,450),350,2030);
-                        inciarMovimientoMeteorito("2lvl2",()=> Metiorito_Direccion("Meteiorito2lvl2",80 ,450),300,2750);
-                        inciarMovimientoMeteorito("3lvl2",()=> Metiorito_Direccion("Meteiorito3lvl2",80 ,450),220,2470);
+                        inciarMovimientoMeteorito("lvl2",()=> Metiorito_Direccion("Meteioritolvl2",80 ),350,2030);
+                        inciarMovimientoMeteorito("2lvl2",()=> Metiorito_Direccion("Meteiorito2lvl2",80 ),300,2750);
+                        inciarMovimientoMeteorito("3lvl2",()=> Metiorito_Direccion("Meteiorito3lvl2",80 ),220,2470);
 
                 
                          Activolvl2 = 1 } } } //CAMBIAMOS EL VALOR DE NUEVO A 1 PARA QUE AL SIGUIENTE CLICK SE EJECUTE EL PAUSE  S 
