@@ -101,7 +101,6 @@ function JUEGO() {
 
   Restar_Tiempo = setInterval(Tiempo_Disminur, 1000);
 
-  //AÑADIMOS LA FUNCION AUMENTAR PUNTOS AL PASAR EL CURSOR SOBRE LOS METIORITOS
   document
     .getElementById("Meteiorito")
     .addEventListener("mouseover", Aumentar_Puntos);
@@ -109,51 +108,41 @@ function JUEGO() {
     .getElementById("Meteiorito2")
     .addEventListener("mouseover", Aumentar_Puntos);
 
-  function configurarEventos() {
-    document
-      .getElementById("NEXT")
-      .addEventListener("click", HabilitarSiguienteNivel);
-  }
-  
-
-  function HabilitarSiguienteNivel() {
-    document.getElementById("NIVEL_01").style.display = "none";
-    document.getElementById("NIVEL_02").style.display = "block";
-  }
-
-  verificar_Derrota = setInterval(perdiste, 100);
-
-  function Ganaste_Pantalla() {
-    clearInterval(Reanudar_trayectoria);
-    clearInterval(Reanudar_trayectoria2);
-    clearInterval(Restar_Tiempo);
-    clearInterval(verificar_Derrota);
-
-    document.getElementById("Meteiorito").style.left = "-70%";
-    document.getElementById("Meteiorito").style.transition = "0s";
-    document.getElementById("Meteiorito2").style.left = "-70%";
-    document.getElementById("Meteiorito2").style.transition = "0s";
-  }
-
   //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
   function Aumentar_Puntos() {
     Puntaje++;
-    document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;27";
-    if (Puntaje == 27) {
+    document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;5";
+    if (Puntaje == 5) {
       Puntaje = 0;
       Tiempo = 71;
 
+      document
+        .getElementById("NEXT")
+        .addEventListener("click", Habilitar_Siguienten_LVL);
+      function Habilitar_Siguienten_LVL() {
+        document.getElementById("NIVEL_01").style.display = "none";
+        document.getElementById("NIVEL_02").style.display = "block";
+      }
       document.getElementById("Tiempo").innerHTML = 70;
-      document.getElementById("Puntaje").innerHTML = "&nbsp;/&nbsp";
-
+      document.getElementById("Puntaje").innerHTML = 0 + "&nbsp;/&nbsp;" + 27;
       document.getElementById("Triunfo").play();
       document.getElementById("Fondo_Ciberpunk").pause();
       document.getElementById("Puntos_sound").pause();
       document.getElementById("Punto2").pause();
-
       document.getElementById("GANASTE_PANTALLA").style.display = "flex";
 
-      Desbloquear_Pantalla = setTimeout(Ganaste_Pantalla, 50);
+      function Ganaste_Pantalla() {
+        clearInterval(Reanudar_trayectoria);
+        clearInterval(Reanudar_trayectoria2);
+        clearInterval(Restar_Tiempo);
+
+        document.getElementById("Meteiorito").style.left = "-70%";
+        document.getElementById("Meteiorito").style.transition = "0s";
+        document.getElementById("Meteiorito2").style.left = "-70%";
+        document.getElementById("Meteiorito2").style.transition = "0s";
+      }
+
+      Desbloquear_Pantalla = setInterval(Ganaste_Pantalla, 1);
 
       Swal.fire({
         title:
@@ -174,8 +163,6 @@ function JUEGO() {
       });
     }
   }
-
-  configurarEventos();
 
   //ESTA FUNCION DIRIGE AL PRIMER METIORITO 1 A LA TIERRA
   function Metiorito_Direccion() {
