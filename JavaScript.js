@@ -114,6 +114,7 @@ function JUEGO() {
       .getElementById("NEXT")
       .addEventListener("click", HabilitarSiguienteNivel);
   }
+  
 
   function HabilitarSiguienteNivel() {
     document.getElementById("NIVEL_01").style.display = "none";
