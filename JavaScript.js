@@ -217,7 +217,7 @@ function perdiste() {
 
     setTimeout(() => {
       JUEGO();
-    },200)
+    },100)
     
   } else {
     document.getElementById("Meteiorito").style.transition = "2.4s";
