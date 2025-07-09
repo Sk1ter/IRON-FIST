@@ -198,27 +198,33 @@ function perdiste() {
     document.getElementById("Meteiorito2").offsetLeft > 630
   ) {
     document.getElementById("Perdiste_sound").play();
-    alert(
-      "YA ES DEMASIADO TARDE, LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR"
-    );
-    document.getElementById("Meteiorito").style.left = "-70%";
-    document.getElementById("Meteiorito").style.transition = "0s";
-
-    document.getElementById("Meteiorito2").style.left = "-70%";
-    document.getElementById("Meteiorito2").style.transition = "0s";
 
     clearInterval(Restar_Tiempo);
     clearInterval(Reanudar_trayectoria);
     clearInterval(Reanudar_trayectoria2);
     clearInterval(IntervaloPerdiste);
 
-    Tiempo = 71;
-    Puntaje = 0;
+    Swal.fire({
+      title: '¡PERDISTE!',
+      html: 'YA ES DEMASIADO TARDE, LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+      icon: 'error',
+      confirmButtonText: 'REINTENTAR',
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    }).then(() => {
+      document.getElementById("Meteiorito").style.left = "-70%";
+      document.getElementById("Meteiorito").style.transition = "0s";
+      document.getElementById("Meteiorito2").style.left = "-70%";
+      document.getElementById("Meteiorito2").style.transition = "0s";
 
-    setTimeout(() => {
-      JUEGO();
-    },100)
-    
+      Tiempo = 71;
+      Puntaje = 0;
+
+      setTimeout(() => {
+        JUEGO();
+      }, 1200);
+    });
+
   } else {
     document.getElementById("Meteiorito").style.transition = "2.4s";
     document.getElementById("Meteiorito2").style.transition = "2.4s";
@@ -251,7 +257,7 @@ function JUEGO() {
 //LE DECIMOS QUE AL PRECIONAR EL BOTON JUGAR EJECUTARA LA FUNCION PLAY
 document.getElementById("Play").addEventListener("click", PLAY);
 
-Conteo = 4; //ESTE ES EL CONTEO DE LA CUENTA REGRESIVA QUE SE DA DESPUEZ DE PRESINAR JUGAR
+Conteo = 4; //ESTE ES EL CONTEO DE LA CUENTA REGRESIVA QUE SE DAEZPUEZ DE PRESINAR JUGAR
 
 //ESTA FUNCION EJECUTA UN CONJUNTO DE ACCIONES AL PRESIONAR JUGAR
 function PLAY() {
