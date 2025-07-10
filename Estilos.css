@@ -736,6 +736,8 @@ html body {
   height: 100%;
   display: flex;
   position: absolute;
+  justify-content: center; 
+  align-items: center; 
 }
 
 /*ESTILOS DE LOS NUMEROS DEL COTEO EN START*/
