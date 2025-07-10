@@ -18,11 +18,11 @@ Swal.fire({
 
 let Tiempo = 71; //VARIBLE DE INICIO TIEMPO
 let Puntaje = 0; //VARIABLE DE INICIO PUNTOS
-let Desbloquear_Pantalla;
 let Reanudar_trayectoria, Reanudar_trayectoria2, Restar_Tiempo;
 let Narracion = 1;
 let PausarFondoParaNarracion = false;
 let Activo = 1;
+let IntervaloPerdiste;
 
 //FUNCION DE NARRACIONES
 document
@@ -80,185 +80,191 @@ function Graficos_fondo() {
   }
 }
 
-//CONTENEDOR QUE CONTEIENE TOO EL JUEGO
-//DE POR SI ESTA FUNCION NO SE EJECUTA HASTA QUE SE LA LLAMA, MAS ADELANTE LA LLAMAREMOS
-//PARA QUE EL JUEGO INICIE UNA VEZ SE PRESIONE JUGAR
+// FUNCION QUE REDUCE EL TIEMPO Y RESETEAL EL RESULTADO UNA VEZ LLEGUE A 0
+function Tiempo_Disminur() {
+  Tiempo--;
+  document.getElementById("Tiempo").innerHTML = Tiempo;
+  if (Tiempo == 0) {
+    Tiempo = 71;
+    Puntaje = 0;
+    document.getElementById("Perdiste_sound").play();
+    Swal.fire({
+      title: '¡PERDISTE!',
+      html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+      icon: 'error',
+      confirmButtonText: 'REINTENTAR',
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    });
+  }
+}
 
-let verificar_Derrota;
+// FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
+function Aumentar_Puntos() {
+  Puntaje++;
+  document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;27";
+  if (Puntaje == 27) {
+    Puntaje = 0;
+    Tiempo = 71;
 
-function JUEGO() {
-  function Tiempo_Disminur() {
-    //FUNCION QUE REDUCE EL TIEMPO Y RESETEAL EL RESULTADO UNA VEZ LLEGUE A 0
-    Tiempo--;
-    document.getElementById("Tiempo").innerHTML = Tiempo;
-    if (Tiempo == 0) {
-      Tiempo = 71;
-      Puntaje = 0;
-      document.getElementById("Perdiste_sound").play();
-      alert("Lo lamento perdiste");
+    document.getElementById("NEXT").addEventListener("click", Habilitar_Siguienten_LVL);
+
+    function Habilitar_Siguienten_LVL() {
+      document.getElementById("NIVEL_01").style.display = "none";
+      document.getElementById("NIVEL_02").style.display = "block";
     }
-  }
+    document.getElementById("Tiempo").innerHTML = 70;
+    document.getElementById("Puntaje").innerHTML = 0 + "&nbsp;/&nbsp;" + 27;
+    document.getElementById("Triunfo").play();
+    document.getElementById("Fondo_Ciberpunk").pause();
+    document.getElementById("Puntos_sound").pause();
+    document.getElementById("Punto2").pause();
+    document.getElementById("GANASTE_PANTALLA").style.display = "flex";
 
-  Restar_Tiempo = setInterval(Tiempo_Disminur, 1000);
+    function Ganaste_Pantalla() {
+      clearInterval(Reanudar_trayectoria);
+      clearInterval(Reanudar_trayectoria2);
+      clearInterval(Restar_Tiempo);
+      clearInterval(IntervaloPerdiste);
 
-  document
-    .getElementById("Meteiorito")
-    .addEventListener("mouseover", Aumentar_Puntos);
-  document
-    .getElementById("Meteiorito2")
-    .addEventListener("mouseover", Aumentar_Puntos);
-
-  //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
-  function Aumentar_Puntos() {
-    Puntaje++;
-    document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;27";
-    if (Puntaje == 27) {
-      Puntaje = 0;
-      Tiempo = 71;
-
-      document
-        .getElementById("NEXT")
-        .addEventListener("click", Habilitar_Siguienten_LVL);
-      function Habilitar_Siguienten_LVL() {
-        document.getElementById("NIVEL_01").style.display = "none";
-        document.getElementById("NIVEL_02").style.display = "block";
-      }
-      document.getElementById("Tiempo").innerHTML = 70;
-      document.getElementById("Puntaje").innerHTML = 0 + "&nbsp;/&nbsp;" + 27;
-      document.getElementById("Triunfo").play();
-      document.getElementById("Fondo_Ciberpunk").pause();
-      document.getElementById("Puntos_sound").pause();
-      document.getElementById("Punto2").pause();
-      document.getElementById("GANASTE_PANTALLA").style.display = "flex";
-
-      function Ganaste_Pantalla() {
-        clearInterval(Reanudar_trayectoria);
-        clearInterval(Reanudar_trayectoria2);
-        clearInterval(Restar_Tiempo);
-
-        document.getElementById("Meteiorito").style.left = "-70%";
-        document.getElementById("Meteiorito").style.transition = "0s";
-        document.getElementById("Meteiorito2").style.left = "-70%";
-        document.getElementById("Meteiorito2").style.transition = "0s";
-      }
-
-      Desbloquear_Pantalla = setInterval(Ganaste_Pantalla, 1);
-
-      Swal.fire({
-        title:
-          'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width = "120px"><br>',
-        html: "Al parecer nos salvamos, agradecemos tu ayuda y ezfuerzo al superar este nivel, esperamos seguir contando contigo, si algo mas sucede y por cierto, no olvides que te esperan grandes cosas al final del juego asi que no pares de intentar ",
-        icon: "success",
-        confirmButtonText: "QUIERO CONTINUAR",
-        width: "50%",
-        // height: "80%",
-        timer: 100000,
-
-        timerProgressbar: true,
-        /*Funcion de cerrar la alerta*/
-        allowOutsideClick: true,
-        allowEscapeKey: false,
-        allowEnterKey: false,
-        stopKeydownPropagation: false,
-      });
-    }
-  }
-
-  //ESTA FUNCION DIRIGE AL PRIMER METIORITO 1 A LA TIERRA
-  function Metiorito_Direccion() {
-    Distancia1 = 80;
-    Altura1 = Math.round(Math.random() * 450);
-
-    document.getElementById("Meteiorito").style.left = Distancia1 + "%";
-    document.getElementById("Meteiorito").style.top = Altura1 + "px";
-  }
-
-  setTimeout(Metiorito_Direccion, 2000); //PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
-  Reanudar_trayectoria = setInterval(Metiorito_Direccion, 2430); //LUEGO SE VA A LLAMAR A LOS METIORITOS CADA 2,4 SEGUNDOS
-
-  //ESTA FUNCION DIRIGE AL PRIMER METIORITO 2 A LA TIERRA
-  function Metiorito_Direccion2() {
-    Distancia2 = 80;
-    Altura2 = Math.round(Math.random() * 450);
-
-    document.getElementById("Meteiorito2").style.left = Distancia2 + "%";
-    document.getElementById("Meteiorito2").style.top = Altura2 + "px";
-  }
-
-  setTimeout(Metiorito_Direccion2, 2600); //PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
-  Reanudar_trayectoria2 = setInterval(Metiorito_Direccion2, 2350); //LUEGO SE VA A LLAMAR A LOS METIORITOS CADA 2,3 SEGUNDOS
-
-  //AQUI ADJUNTAMOS LA ACCION DE LA FUNCION EXPULZAR AL PASAR SOBRE EL METIORITO
-  document
-    .getElementById("Meteiorito")
-    .addEventListener("mouseover", Explulsar);
-  document
-    .getElementById("Meteiorito2")
-    .addEventListener("mouseover", Explulsar2);
-
-  //ESTA ES LA FUNCION QUE EXPULSA AL METIRITO 1 DE MANERA ALEATORIA FUERA DEL MAPA
-
-  function Explulsar() {
-    const meteorito = document.getElementById("Meteiorito");
-    const sonido = document.getElementById("Puntos_sound");
-
-    sonido.play();
-
-    const distancia = -500;
-    const altura = Math.round(Math.random() * 450);
-
-    meteorito.style.left = distancia + "px";
-    meteorito.style.top = altura + "px";
-    meteorito.style.transition = "1.8s";
-  }
-
-  //ESTA ES LA FUNCION QUE EXPULSA AL METIRITO 2 DE MANERA ALEATORIA FUERA DEL MAPA
-  function Explulsar2() {
-    const meteorito2 = document.getElementById("Meteiorito2");
-    const sonido = document.getElementById("Punto2");
-
-    sonido.play();
-
-    const distancia = -500;
-    const altura = Math.round(Math.random() * 450);
-
-    meteorito2.style.left = distancia + "px";
-    meteorito2.style.top = altura + "px";
-    meteorito2.style.transition = "1.8s";
-  }
-
-  //ESTA FUNCION SE ENCARGA DE ALERTARTE UNA VEZ EL METIORITO CRUZE LA LINEA CON UN PERDISTE
-  //TAMBIEN RESETEA LOS VALORES Y LLEVA A LOS METIORITOS FUERA DEL MAPA DE MANERA INSTANTANEA
-  function perdiste() {
-    if (
-      document.getElementById("Meteiorito").offsetLeft > 630 ||
-      document.getElementById("Meteiorito2").offsetLeft > 630
-    ) {
-      document.getElementById("Perdiste_sound").play();
-      alert(
-        "YA ES DEMASIADO TARDE, LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR"
-      );
       document.getElementById("Meteiorito").style.left = "-70%";
       document.getElementById("Meteiorito").style.transition = "0s";
+      document.getElementById("Meteiorito2").style.left = "-70%";
+      document.getElementById("Meteiorito2").style.transition = "0s";
+    }
 
+    Ganaste_Pantalla();
+
+    Swal.fire({
+      title:
+        'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width = "120px"><br>',
+      html: "Al parecer nos salvamos, agradecemos tu ayuda y ezfuerzo al superar este nivel, esperamos seguir contando contigo, si algo mas sucede y por cierto, no olvides que te esperan grandes cosas al final del juego asi que no pares de intentar ",
+      icon: "success",
+      confirmButtonText: "QUIERO CONTINUAR",
+      width: "50%",
+      // height: "80%",
+      timer: 100000,
+
+      timerProgressbar: true,
+    });
+  }
+}
+
+//ESTA FUNCION DIRIGE AL PRIMER METIORITO 1 A LA TIERRA
+function Metiorito_Direccion() {
+  Distancia1 = 80;
+  Altura1 = Math.round(Math.random() * 450);
+
+  document.getElementById("Meteiorito").style.left = Distancia1 + "%";
+  document.getElementById("Meteiorito").style.top = Altura1 + "px";
+}
+
+//ESTA FUNCION DIRIGE AL PRIMER METIORITO 2 A LA TIERRA
+function Metiorito_Direccion2() {
+  Distancia2 = 80;
+  Altura2 = Math.round(Math.random() * 450);
+
+  document.getElementById("Meteiorito2").style.left = Distancia2 + "%";
+  document.getElementById("Meteiorito2").style.top = Altura2 + "px";
+}
+
+//ESTA ES LA FUNCION QUE EXPULSA AL METIRITO 1 DE MANERA ALEATORIA FUERA DEL MAPA
+function Explulsar() {
+  const meteorito = document.getElementById("Meteiorito");
+  const sonido = document.getElementById("Puntos_sound");
+
+  sonido.play();
+
+  const distancia = -500;
+  const altura = Math.round(Math.random() * 450);
+
+  meteorito.style.left = distancia + "px";
+  meteorito.style.top = altura + "px";
+  meteorito.style.transition = "1.8s";
+}
+
+//ESTA ES LA FUNCION QUE EXPULSA AL METIRITO 2 DE MANERA ALEATORIA FUERA DEL MAPA
+function Explulsar2() {
+  const meteorito2 = document.getElementById("Meteiorito2");
+  const sonido = document.getElementById("Punto2");
+
+  sonido.play();
+
+  const distancia = -500;
+  const altura = Math.round(Math.random() * 450);
+
+  meteorito2.style.left = distancia + "px";
+  meteorito2.style.top = altura + "px";
+  meteorito2.style.transition = "1.8s";
+}
+
+//ESTA FUNCION SE ENCARGA DE ALERTARTE UNA VEZ EL METIORITO CRUZE LA LINEA CON UN PERDISTE
+function perdiste() {
+  if (
+    document.getElementById("Meteiorito").offsetLeft > 630 ||
+    document.getElementById("Meteiorito2").offsetLeft > 630
+  ) {
+    document.getElementById("Perdiste_sound").play();
+
+    clearInterval(Restar_Tiempo);
+    clearInterval(Reanudar_trayectoria);
+    clearInterval(Reanudar_trayectoria2);
+    clearInterval(IntervaloPerdiste);
+
+    Swal.fire({
+      title: '¡PERDISTE!',
+      html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+      icon: 'error',
+      confirmButtonText: 'REINTENTAR',
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    }).then(() => {
+      document.getElementById("Meteiorito").style.left = "-70%";
+      document.getElementById("Meteiorito").style.transition = "0s";
       document.getElementById("Meteiorito2").style.left = "-70%";
       document.getElementById("Meteiorito2").style.transition = "0s";
 
       Tiempo = 71;
       Puntaje = 0;
-    } else {
-      document.getElementById("Meteiorito").style.transition = "2.4s";
-      document.getElementById("Meteiorito2").style.transition = "2.4s";
-    }
-  }
 
-  setInterval(perdiste, 100); // 100 = 10 veces por segundo suficiente 
+      setTimeout(() => {
+        JUEGO();
+      }, 1200);
+    });
+
+  } else {
+    document.getElementById("Meteiorito").style.transition = "2.4s";
+    document.getElementById("Meteiorito2").style.transition = "2.4s";
+  }
+}
+
+function JUEGO() {
+  clearInterval(Restar_Tiempo);
+  clearInterval(Reanudar_trayectoria);
+  clearInterval(Reanudar_trayectoria2);
+  clearInterval(IntervaloPerdiste);
+
+  Restar_Tiempo = setInterval(Tiempo_Disminur, 1000);
+
+  document.getElementById("Meteiorito").addEventListener("mouseover", Aumentar_Puntos);
+  document.getElementById("Meteiorito2").addEventListener("mouseover", Aumentar_Puntos);
+
+  setTimeout(Metiorito_Direccion, 2000);
+  Reanudar_trayectoria = setInterval(Metiorito_Direccion, 2430);
+
+  setTimeout(Metiorito_Direccion2, 2600);
+  Reanudar_trayectoria2 = setInterval(Metiorito_Direccion2, 2350);
+
+  document.getElementById("Meteiorito").addEventListener("mouseover", Explulsar);
+  document.getElementById("Meteiorito2").addEventListener("mouseover", Explulsar2);
+
+  IntervaloPerdiste = setInterval(perdiste, 100);
 }
 
 //LE DECIMOS QUE AL PRECIONAR EL BOTON JUGAR EJECUTARA LA FUNCION PLAY
 document.getElementById("Play").addEventListener("click", PLAY);
 
-Conteo = 4; //ESTE ES EL CONTEO DE LA CUENTA REGRESIVA QUE SE DA DESPUEZ DE PRESINAR JUGAR
+Conteo = 4; //ESTE ES EL CONTEO DE LA CUENTA REGRESIVA QUE SE DAEZPUEZ DE PRESINAR JUGAR
 
 //ESTA FUNCION EJECUTA UN CONJUNTO DE ACCIONES AL PRESIONAR JUGAR
 function PLAY() {
@@ -347,7 +353,14 @@ function DETENER_JUEGO() {
           Tiempo = 71;
           Puntaje = 0;
           document.getElementById("Perdiste_sound").play();
-          alert("Lo lamento perdiste");
+          Swal.fire({
+            title: '¡PERDISTE!',
+            html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+            icon: 'error',
+            confirmButtonText: 'REINTENTAR',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+          });
           document.getElementById("Meteiorito").style.left = "-70%";
           document.getElementById("Meteiorito").style.transition = "0s"; //CREAR UNA FUNCION EN BASE A ESTO Y PASAR COMO REANUDAR EN GANASTE
 
