@@ -88,7 +88,14 @@ function Tiempo_Disminur() {
     Tiempo = 71;
     Puntaje = 0;
     document.getElementById("Perdiste_sound").play();
-    alert("Lo lamento perdiste");
+    Swal.fire({
+      title: '¡PERDISTE!',
+      html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+      icon: 'error',
+      confirmButtonText: 'REINTENTAR',
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    });
   }
 }
 
@@ -206,7 +213,7 @@ function perdiste() {
 
     Swal.fire({
       title: '¡PERDISTE!',
-      html: 'YA ES DEMASIADO TARDE, LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+      html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
       icon: 'error',
       confirmButtonText: 'REINTENTAR',
       allowOutsideClick: false,
@@ -346,7 +353,14 @@ function DETENER_JUEGO() {
           Tiempo = 71;
           Puntaje = 0;
           document.getElementById("Perdiste_sound").play();
-          alert("Lo lamento perdiste");
+          Swal.fire({
+            title: '¡PERDISTE!',
+            html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+            icon: 'error',
+            confirmButtonText: 'REINTENTAR',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+          });
           document.getElementById("Meteiorito").style.left = "-70%";
           document.getElementById("Meteiorito").style.transition = "0s"; //CREAR UNA FUNCION EN BASE A ESTO Y PASAR COMO REANUDAR EN GANASTE
 
