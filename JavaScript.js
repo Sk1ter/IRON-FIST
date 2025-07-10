@@ -90,7 +90,7 @@ function Tiempo_Disminur() {
     document.getElementById("Perdiste_sound").play();
     Swal.fire({
       title: '¡PERDISTE!',
-      html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+      html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE, AHORA SOLO QUEDA PREPARARSE PARA LO PEOR',
       icon: 'error',
       confirmButtonText: 'REINTENTAR',
       allowOutsideClick: false,
@@ -213,7 +213,7 @@ function perdiste() {
 
     Swal.fire({
       title: '¡PERDISTE!',
-      html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+      html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE, AHORA SOLO QUEDA PREPARARSE PARA LO PEOR',
       icon: 'error',
       confirmButtonText: 'REINTENTAR',
       allowOutsideClick: false,
@@ -355,7 +355,7 @@ function DETENER_JUEGO() {
           document.getElementById("Perdiste_sound").play();
           Swal.fire({
             title: '¡PERDISTE!',
-            html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR',
+            html: 'YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE, AHORA SOLO QUEDA PREPARARSE PARA LO PEOR',
             icon: 'error',
             confirmButtonText: 'REINTENTAR',
             allowOutsideClick: false,
