@@ -26,18 +26,21 @@ let nivelganado = false;
         perdiste: document.getElementById("Perdiste_sound")
         };
         function Metiorito_Direccionlvl2(){
+            if (nivelganado) return;
             Distancia1lvl2 = 80
             Altura1lvl2 = Math.round(Math.random()* 450)
 
             document.getElementById("Meteioritolvl2").style.left = Distancia1lvl2 + "%"
             document.getElementById("Meteioritolvl2").style.top = Altura1lvl2 + "px"}
         function Metiorito_Direccion2lvl2(){
+            if (nivelganado) return;
             Distancia2lvl2 = 80
             Altura2lvl2 = Math.round(Math.random()* 450)
 
             document.getElementById("Meteiorito2lvl2").style.left = Distancia2lvl2 + "%"
             document.getElementById("Meteiorito2lvl2").style.top = Altura2lvl2 + "px"}
         function Metiorito_Direccion3lvl2(){
+            if (nivelganado) return;
                 Distancia3lvl2 = 80
                 Altura3lvl2 = Math.round(Math.random()* 450)
     
