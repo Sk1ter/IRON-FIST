@@ -102,8 +102,8 @@ function Tiempo_Disminur() {
 // FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
 function Aumentar_Puntos() {
   Puntaje++;
-  document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;27";
-  if (Puntaje == 27) {
+  document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;26";
+  if (Puntaje == 26) {
     Puntaje = 0;
     Tiempo = 71;
 
@@ -114,7 +114,7 @@ function Aumentar_Puntos() {
       document.getElementById("NIVEL_02").style.display = "block";
     }
     document.getElementById("Tiempo").innerHTML = 70;
-    document.getElementById("Puntaje").innerHTML = 0 + "&nbsp;/&nbsp;" + 27;
+    document.getElementById("Puntaje").innerHTML = 0 + "&nbsp;/&nbsp;" + 26;
     document.getElementById("Triunfo").play();
     document.getElementById("Fondo_Ciberpunk").pause();
     document.getElementById("Puntos_sound").pause();
