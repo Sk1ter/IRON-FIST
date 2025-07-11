@@ -83,7 +83,7 @@ function JUEGOlvl3() {
     
     if (Tiempolvl3 <= 0) {
       Juego_Terminado = true; // Marcar juego como terminado
-      alert("Lo lamento perdiste - El juego se reiniciará automáticamente");
+      alert("YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE, AHORA SOLO QUEDA PREPARARSE PARA LO PEOR");
       ReiniciarJuego(true); // Reiniciar automáticamente después de perder
     }
   }
@@ -292,7 +292,7 @@ function JUEGOlvl3() {
     ) {
       Juego_Terminado = true; // Marcar juego como terminado
       
-      alert("YA ES DEMASIADO TARDE LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE - El juego se reiniciará automáticamente");
+      alert("YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE, AHORA SOLO QUEDA PREPARARSE PARA LO PEOR");
       document.getElementById("Perdiste_sound").play();
 
       // Usar función de reinicio automático
@@ -390,7 +390,7 @@ function DETENER_JUEGOlvl3() {
         document.getElementById("Tiempolvl3").innerHTML = Tiempolvl3;
         if (Tiempolvl3 <= 0) {
           Juego_Terminado = true;
-          alert("Lo lamento perdiste - El juego se reiniciará automáticamente");
+          alert("YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE, AHORA SOLO QUEDA PREPARARSE PARA LO PEOR");
           ReiniciarJuego(true);
         }
       }
@@ -481,7 +481,7 @@ function DETENER_JUEGOlvl3() {
           document.getElementById("Meteorito4lvl3").offsetLeft > 630
         ) {
           Juego_Terminado = true;
-          alert("YA ES DEMASIADO TARDE LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE - El juego se reiniciará automáticamente");
+          alert("YA ES DEMASIADO TARDE, LOS ZERG DESTRUYERON GRAN PARTE DEL CONTINENTE, AHORA SOLO QUEDA PREPARARSE PARA LO PEOR");
           document.getElementById("Perdiste_sound").play();
           ReiniciarJuego(true);
         } else {
